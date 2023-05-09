@@ -2,27 +2,56 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Add this line
+  standalone: true,
   template: `
-    <div>
-      <h1>Counter App</h1>
-      <p>Value: {{ value }}</p>
-      <button (click)="increment()">+</button>
-      <button (click)="decrement()">-</button>
+    <div class="container">
+      <button class="btn btn-secondary" (click)="decreaseCounter()">-</button>
+      <div class="counter">{{ counter }}</div>
+      <button class="btn btn-secondary" (click)="increaseCounter()">+</button>
     </div>
   `,
-  styles: []
+  styles: [`
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #222;
+    }
+
+    .btn {
+      font-size: 2rem;
+      border-radius: 50%;
+      padding: 1rem;
+      background-color: orange;
+      color: white;
+      margin: 0 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+      background-color: #FFA500;
+    }
+
+    .counter {
+      font-size: 4rem;
+      color: white;
+      margin: 0 2rem;
+    }
+  `]
 })
 export class AppComponent {
-  value = 0;
+  counter = 0;
 
-  increment() {
-    this.value += 1;
+  increaseCounter() {
+    this.counter++;
   }
 
-  decrement() {
-    this.value -= 1;
+  decreaseCounter() {
+    if (this.counter > 0) {
+      this.counter--;
+    }
   }
 }
-
-
