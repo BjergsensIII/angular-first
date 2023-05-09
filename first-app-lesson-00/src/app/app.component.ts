@@ -5,53 +5,39 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <div class="container">
-      <button class="btn btn-secondary" (click)="decreaseCounter()">-</button>
-      <div class="counter">{{ counter }}</div>
-      <button class="btn btn-secondary" (click)="increaseCounter()">+</button>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="https://via.placeholder.com/500x500.png?text=Product+Image" class="img-fluid" alt="Product Image">
+        </div>
+        <div class="col-md-6">
+          <h1>{{ product.title }}</h1>
+          <p>{{ product.description }}</p>
+          <h2>{{ product.price }} €</h2>
+          <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+        </div>
+      </div>
     </div>
   `,
   styles: [`
     .container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #222;
+      margin-top: 2rem;
     }
 
-    .btn {
-      font-size: 2rem;
-      border-radius: 50%;
-      padding: 1rem;
-      background-color: orange;
-      color: white;
-      margin: 0 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease-in-out;
-    }
-
-    .btn:hover {
-      background-color: #FFA500;
-    }
-
-    .counter {
-      font-size: 4rem;
-      color: white;
-      margin: 0 2rem;
+    img {
+      max-height: 500px;
+      margin-bottom: 2rem;
     }
   `]
 })
 export class AppComponent {
-  counter = 0;
+  product = {
+    title: 'Cap',
+    description: 'This is a simple cap',
+    price: 19.99
+  };
 
-  increaseCounter() {
-    this.counter++;
-  }
-
-  decreaseCounter() {
-    if (this.counter > 0) {
-      this.counter--;
-    }
+  addToCart() {
+    // Implement your add to cart functionality here
+    console.log('Added to cart');
   }
 }
